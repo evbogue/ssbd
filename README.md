@@ -2,6 +2,8 @@
 
 SSBD is a lightweight Secure Scuttlebutt peer/server written in Deno that serves your log over HTTP + WebSocket, provides a modern in-browser client, and wraps the REST bridge helpers needed to follow remote peers. It handles Ed25519 key generation, publishing posts, following/unfollowing contacts, updating profile names/avatars (with local blob storage), and rendering richer message types like `about`, `contact`, and git-ssb updates—all with offline caching and live updates in the browser.
 
+![SSBD UI](public/screenshot.png)
+
 ## 🚀 Getting started
 
 1. **Install Deno** (v1.40+): follow [deno.land/manual/getting_started](https://deno.land/manual/getting_started/installation).
