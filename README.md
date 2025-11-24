@@ -6,7 +6,7 @@ SSBD is a lightweight Secure Scuttlebutt peer/server written in Deno that serves
 
 ## 🚀 Getting started
 
-1. **Install Deno** (v1.40+): follow [deno.land/manual/getting_started](https://deno.land/manual/getting_started/installation).
+1. **Install Deno** (v2.5.6+): follow [deno.land/manual/getting_started](https://deno.land/manual/getting_started/installation).
 2. **Clone this repo**: `git clone https://example.com/ssbd && cd ssbd`.
 3. **Run the server**:
    ```bash

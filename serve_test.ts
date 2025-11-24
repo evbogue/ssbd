@@ -1,4 +1,4 @@
-import { assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import { assertEquals } from "jsr:@std/assert/equals";
 import { signValue, UnsignedValue } from './feed.ts'
 import { generate } from './keygen.ts'
 

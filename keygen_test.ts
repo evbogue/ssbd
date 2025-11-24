@@ -1,4 +1,5 @@
-import { assert, assertEquals } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import { assert } from "jsr:@std/assert/assert";
+import { assertEquals } from "jsr:@std/assert/equals";
 import { generate, toBuffer } from './keygen.ts'
 
 Deno.test('generate returns an ed25519 key pair with matching metadata', async () => {

@@ -1,4 +1,4 @@
-import { parseArgs } from "https://deno.land/std@0.207.0/cli/parse_args.ts"
+import { parseArgs } from "jsr:@std/cli/parse-args"
 import { appendContent } from './feed.ts'
 import { DEFAULT_KEY_DIR, loadOrCreateKeys } from './keys.ts'
 

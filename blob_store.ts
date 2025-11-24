@@ -1,5 +1,5 @@
-import { join } from "https://deno.land/std@0.207.0/path/mod.ts"
-import { encode as encodeBase64 } from "https://deno.land/std@0.207.0/encoding/base64.ts"
+import { join } from "jsr:@std/path/join"
+import { encodeBase64 } from "jsr:@std/encoding/base64"
 
 const BLOB_DIR = 'blobs'
 const HASH_SUFFIX = '.sha256'

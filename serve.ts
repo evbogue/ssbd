@@ -1,5 +1,6 @@
-import { parseArgs as parseCliArgs } from "https://deno.land/std@0.207.0/cli/parse_args.ts"
-import { fromFileUrl, join } from "https://deno.land/std@0.207.0/path/mod.ts"
+import { parseArgs as parseCliArgs } from "jsr:@std/cli/parse-args"
+import { fromFileUrl } from "jsr:@std/path/from-file-url"
+import { join } from "jsr:@std/path/join"
 import { appendContent, appendSignedMessage, appendSignedMessageLoose, readFeed, MessageValue, FeedEntry } from './feed.ts'
 import { DEFAULT_KEY_DIR, loadOrCreateKeys } from './keys.ts'
 import { FeedTracker } from './feed_tracker.ts'

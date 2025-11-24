@@ -1,5 +1,5 @@
-import { decode as base64Decode, encode as base64Encode } from "https://deno.land/std@0.207.0/encoding/base64.ts";
-import { parseArgs } from "https://deno.land/std@0.207.0/cli/parse_args.ts";
+import { decodeBase64, encodeBase64 } from "jsr:@std/encoding/base64";
+import { parseArgs } from "jsr:@std/cli/parse-args";
 import tweetNacl from './deps/tweetnacl.js'
 // Import shared WebCrypto helpers (JS module) for generating seed values
 import { generateEd25519Keypair } from './public/lib/webcrypto-keys.js'
@@ -36,7 +36,7 @@ export interface KeyJSON {
 }
 
 function tagKey(key: Uint8Array, curve: CurveTag): string {
-  return `${base64Encode(key)}.${curve}`
+  return `${encodeBase64(key)}.${curve}`
 }
 
 export function hasSigil(value: string): boolean {
@@ -55,7 +55,7 @@ export function toBuffer(value?: string | Uint8Array | null): Uint8Array | undef
   const startIndex = hasSigil(value) ? 1 : 0
   const endIndex = value.indexOf('.')
   const base = endIndex === -1 ? value.slice(startIndex) : value.slice(startIndex, endIndex)
-  return base64Decode(base)
+  return decodeBase64(base)
 }
 
 export function keysToJSON(keys: RawKeyPair, curve?: CurveTag): KeyJSON {
@@ -101,7 +101,7 @@ if (import.meta.main) {
     console.error('usage: deno run keygen.ts generate [--seed base64]')
     Deno.exit(1)
   }
-  const seedBytes = seed ? base64Decode(seed) : undefined
+  const seedBytes = seed ? decodeBase64(seed) : undefined
   const keys = await generate(DEFAULT_CURVE, seedBytes)
   console.log(JSON.stringify(keys))
 }

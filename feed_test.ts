@@ -1,4 +1,5 @@
-import { assertEquals, assertRejects } from "https://deno.land/std@0.207.0/assert/mod.ts";
+import { assertEquals } from "jsr:@std/assert/equals";
+import { assertRejects } from "jsr:@std/assert/rejects";
 import {
   appendContent,
   appendSignedMessage,

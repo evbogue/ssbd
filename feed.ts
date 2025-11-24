@@ -1,4 +1,4 @@
-import { decode as base64Decode, encode as base64Encode } from "https://deno.land/std@0.207.0/encoding/base64.ts"
+import { decodeBase64, encodeBase64 } from "jsr:@std/encoding/base64"
 import tweetNacl from './deps/tweetnacl.js'
 import { KeyJSON, toBuffer } from './keygen.ts'
 import { getFeedStorageAdapter } from './storage.ts'
@@ -93,7 +93,7 @@ function parseSignature(signature: string): Uint8Array {
     throw new Error('invalid signature format')
   }
   const base = signature.slice(0, -suffix.length)
-  return base64Decode(base)
+  return decodeBase64(base)
 }
 
 async function computeHash(value: UnsignedValue | MessageValue): Promise<{ key: string; bytes: Uint8Array }> {
@@ -103,7 +103,7 @@ async function computeHash(value: UnsignedValue | MessageValue): Promise<{ key: 
   const bytes = canonicalBytes(value)
   const digest = await crypto.subtle.digest('SHA-256', bytes)
   const hashBytes = new Uint8Array(digest)
-  const key = `%${base64Encode(hashBytes)}.sha256`
+  const key = `%${encodeBase64(hashBytes)}.sha256`
   return { key, bytes }
 }
 
@@ -128,7 +128,7 @@ export async function signValue(keys: KeyJSON, value: UnsignedValue): Promise<Me
   const privateKey = toBuffer(keys.private)
   if (!privateKey) throw new Error('missing private key bytes')
   const signed = nacl.sign.detached(canonicalBytes(value), privateKey)
-  const signature = `${base64Encode(signed)}.sig.ed25519`
+  const signature = `${encodeBase64(signed)}.sig.ed25519`
   return { ...value, signature }
 }
 

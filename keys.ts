@@ -1,6 +1,6 @@
 import { generate, KeyJSON } from './keygen.ts'
-import { parseArgs } from "https://deno.land/std@0.207.0/cli/parse_args.ts"
-import { join } from "https://deno.land/std@0.207.0/path/mod.ts"
+import { parseArgs } from "jsr:@std/cli/parse-args"
+import { join } from "jsr:@std/path/join"
 const SECRET_FILENAME = 'secret'
 const DIR_ENV = Deno.env.get('SSBD_DIR')
 const HOME = Deno.env.get('HOME') || Deno.env.get('USERPROFILE') || ''
