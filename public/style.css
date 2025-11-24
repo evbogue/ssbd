@@ -1,0 +1,658 @@
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 0 16px;
+  background: #f6f6f6;
+  color: #222;
+}
+
+
+.ssbd-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.ssbd-header h1 {
+  margin: 0;
+  font-size: 1.4rem;
+}
+
+.ssbd-nav {
+  display: flex;
+  gap: 8px;
+}
+
+.ssbd-nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+}
+
+.ssbd-nav a.active {
+  background: #0070f3;
+  color: #fff;
+  border-color: #0070f3;
+}
+
+#ssbd-main {
+  margin-top: 20px;
+}
+
+.ssbd-view[hidden] {
+  display: none;
+}
+
+.ssbd-profile-card {
+  margin-bottom: 20px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+}
+
+.ssbd-profile-avatar {
+  margin-bottom: 12px;
+}
+
+.ssbd-avatar-large {
+  width: 96px;
+  height: 96px;
+  border-radius: 48px;
+  font-size: 1.4rem;
+}
+
+.ssbd-profile-card h2 {
+  margin: 0 0 4px;
+}
+
+.ssbd-profile-id {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  word-break: break-all;
+  margin: 0 0 6px;
+  color: #666;
+  opacity: 0.8;
+}
+
+.ssbd-profile-self {
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.ssbd-profile-editor label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.ssbd-profile-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ssbd-avatar-editor {
+  margin-top: 16px;
+}
+
+.ssbd-profile-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.ssbd-profile-actions button {
+  padding: 8px 16px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#ssbd-follow-btn {
+  background: #0a7b12;
+  color: #fff;
+}
+
+#ssbd-unfollow-btn {
+  background: #b10024;
+  color: #fff;
+}
+
+.ssbd-avatar-editor label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.ssbd-avatar-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.ssbd-avatar-controls input[type='file'] {
+  flex: 1;
+  min-width: 220px;
+}
+
+.ssbd-avatar-hint {
+  margin: 6px 0 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+input#ssbd-profile-name {
+  flex: 1;
+  min-width: 180px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button#ssbd-profile-save {
+  padding: 8px 14px;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: 4px;
+  background: #555;
+  color: #fff;
+  cursor: pointer;
+}
+
+button#ssbd-profile-save:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+.ssbd-profile-feed h3 {
+  margin: 0 0 10px;
+}
+
+.ssbd-profile-feed #ssbd-profile-feed-entries {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.ssbd-message-card {
+  padding: 18px;
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.ssbd-message-id {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: #555;
+  word-break: break-all;
+  margin: 4px 0 12px;
+}
+
+.ssbd-message-meta {
+  margin-bottom: 12px;
+}
+
+.ssbd-message-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.ssbd-message-author-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ssbd-message-author-meta .ssbd-author {
+  font-size: 1rem;
+}
+
+.ssbd-message-submeta {
+  display: flex;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #555;
+  flex-wrap: wrap;
+}
+
+.ssbd-message-body {
+  margin-bottom: 16px;
+}
+
+.ssbd-message-raw {
+  margin-top: 16px;
+}
+
+.ssbd-message-raw pre {
+  background: #f8f8f8;
+  color: #111;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  overflow-x: auto;
+}
+
+.ssbd-about {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ssbd-about-item {
+  font-size: 0.95rem;
+}
+
+.ssbd-about-image {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ssbd-about-image .ssbd-avatar {
+  flex-shrink: 0;
+}
+
+.ssbd-empty {
+  color: #666;
+  font-style: italic;
+  margin: 0;
+}
+
+#ssbd-feed {
+  margin-top: 24px;
+}
+
+.ssbd-compose {
+  margin-top: 16px;
+}
+
+.ssbd-compose-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 12px;
+}
+
+.ssbd-compose-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+#ssbd-status {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+#ssbd-status[data-status-level='success'] {
+  color: #0a7b12;
+}
+
+#ssbd-status[data-status-level='warn'] {
+  color: #b35a00;
+}
+
+#ssbd-status[data-status-level='error'] {
+  color: #b10024;
+}
+
+a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.ssbd-entry {
+  background: #fff;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  padding: 14px 16px 12px;
+  margin-bottom: 14px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+
+.ssbd-entry-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  gap: 12px;
+}
+
+.ssbd-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, #0070f3, #3291ff);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.ssbd-avatar.ssbd-avatar-image,
+.ssbd-avatar-image {
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+}
+
+.ssbd-avatar-medium {
+  width: 56px;
+  height: 56px;
+  border-radius: 28px;
+  font-size: 1.1rem;
+}
+
+.ssbd-entry-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ssbd-author {
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #222;
+  text-decoration: none;
+}
+
+.ssbd-author:hover {
+  text-decoration: underline;
+}
+
+.ssbd-entry-submeta {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.ssbd-entry-body {
+  font-size: 0.95rem;
+  color: #222;
+}
+
+.ssbd-entry-footer {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.ssbd-post-body p {
+  margin: 0 0 0.75em;
+  line-height: 1.4;
+}
+
+.ssbd-post-body p:last-child {
+  margin-bottom: 0;
+}
+
+.ssbd-reply-ref {
+  font-size: 0.8rem;
+  margin-bottom: 6px;
+}
+
+.ssbd-reply-ref a {
+  color: #555;
+  text-decoration: none;
+}
+
+.ssbd-reply-ref a:hover {
+  text-decoration: underline;
+}
+
+.ssbd-raw {
+  background: #f4f4f4;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 0.85rem;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+textarea#ssbd-text {
+  width: 100%;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  padding: 8px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+button#ssbd-publish {
+  margin-top: 8px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #0070f3;
+  color: #fff;
+  cursor: pointer;
+}
+
+button#ssbd-publish:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+button.ssbd-danger {
+  margin-top: 8px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 4px;
+  background: #b10024;
+  color: #fff;
+  cursor: pointer;
+}
+
+button.ssbd-danger:disabled {
+  opacity: 0.65;
+  cursor: default;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: #111;
+    color: #f5f5f5;
+  }
+
+  .ssbd-profile-card {
+    background: #1d1d1d;
+    border-color: #2a2a2a;
+  }
+
+  input#ssbd-profile-name {
+    color: #f5f5f5;
+    background: #1c1c1c;
+    border-color: #3a3a3a;
+  }
+
+  button#ssbd-profile-save {
+    background: #888;
+  }
+
+  .ssbd-empty {
+    color: #aaa;
+  }
+
+  .ssbd-profile-actions button {
+    background: #333;
+    color: #f5f5f5;
+  }
+
+  #ssbd-status {
+    color: #d0d0d0;
+  }
+
+  #ssbd-status[data-status-level='success'] {
+    color: #2ecc71;
+  }
+
+  #ssbd-status[data-status-level='warn'] {
+    color: #f1c40f;
+  }
+
+  #ssbd-status[data-status-level='error'] {
+    color: #ff6b81;
+  }
+
+  a {
+    color: #3291ff;
+  }
+
+  .ssbd-entry {
+    background: #1d1d1d;
+    border-color: #2a2a2a;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  }
+
+  .ssbd-author,
+  .ssbd-entry-body {
+    color: #f5f5f5;
+  }
+
+  .ssbd-entry-submeta,
+  .ssbd-reply-ref a {
+    color: #bbb;
+  }
+
+  textarea#ssbd-text {
+    color: #f5f5f5;
+    background: #1c1c1c;
+    border-color: #3a3a3a;
+  }
+
+  button#ssbd-publish {
+    background: #3291ff;
+  }
+
+  button.ssbd-danger {
+    background: #ff4d4d;
+    color: #fff;
+  }
+
+  .ssbd-raw {
+    background: #151515;
+    border: 1px solid #2a2a2a;
+    word-break: break-word;
+  }
+
+  .ssbd-post-body a {
+    color: #4dabff;
+  }
+
+  .ssbd-avatar-controls input[type='file'] {
+    color: #f5f5f5;
+    background: #1c1c1c;
+    border: 1px solid #3a3a3a;
+  }
+
+  .ssbd-avatar-hint {
+    color: #bbb;
+  }
+
+  #ssbd-follow-btn {
+    background: #1f8f3a;
+  }
+
+  #ssbd-unfollow-btn {
+    background: #d13b52;
+  }
+
+  .ssbd-profile-id {
+    color: #bbb;
+    opacity: 0.9;
+  }
+
+  .ssbd-message-card {
+    background: #1d1d1d;
+    border-color: #2a2a2a;
+  }
+
+  .ssbd-message-id {
+    color: #bbb;
+  }
+
+  .ssbd-message-raw pre {
+    background: #050505;
+    color: #f5f5f5;
+  }
+
+  .ssbd-git-commits li {
+    border-color: #2a2a2a;
+  }
+
+  .ssbd-git-section {
+    border-color: #2a2a2a;
+  }
+}
+.ssbd-status-inline {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex: 1;
+  min-height: 32px;
+}
+
+.ssbd-status-inline span {
+  padding: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+}
+.ssbd-git {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.ssbd-git-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.ssbd-git-section {
+  margin-top: 6px;
+}
+
+.ssbd-git-section-title {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.ssbd-git-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ssbd-git-list li {
+  padding: 2px 0;
+  font-size: 0.9rem;
+}

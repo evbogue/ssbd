@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>SSBD Client</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header class="ssbd-header">
+      <h1>SSBD</h1>
+      <nav class="ssbd-nav">
+        <a id="ssbd-nav-feed" href="#">Feed</a>
+        <a id="ssbd-nav-profile" href="#me">My profile</a>
+      </nav>
+    </header>
+    <main id="ssbd-main">
+      <section id="ssbd-feed-view" class="ssbd-view" data-view="feed">
+        <section class="ssbd-compose">
+          <textarea id="ssbd-text" rows="4" cols="60" placeholder="Share something…"></textarea>
+          <div class="ssbd-compose-footer">
+            <div class="ssbd-compose-actions">
+              <button id="ssbd-publish">Publish</button>
+              <button id="ssbd-delete-all" class="ssbd-danger" type="button">Delete everything</button>
+            </div>
+            <div class="ssbd-status-inline" id="ssbd-status-bar">
+              <span id="ssbd-status">Connecting…</span>
+            </div>
+          </div>
+        </section>
+        <section id="ssbd-feed"></section>
+      </section>
+      <section id="ssbd-profile-view" class="ssbd-view" data-view="profile" hidden>
+        <div class="ssbd-profile-card">
+          <div class="ssbd-profile-avatar ssbd-avatar ssbd-avatar-large" id="ssbd-profile-avatar">??</div>
+          <h2 id="ssbd-profile-title">Profile</h2>
+          <p class="ssbd-profile-id" id="ssbd-profile-id"></p>
+          <p class="ssbd-profile-self" id="ssbd-profile-self-name"></p>
+          <div class="ssbd-profile-editor">
+            <label id="ssbd-profile-label" for="ssbd-profile-name">Display name</label>
+            <div class="ssbd-profile-controls">
+              <input id="ssbd-profile-name" type="text" placeholder="Display name" autocomplete="off" />
+              <button id="ssbd-profile-save" type="button">Save name</button>
+            </div>
+          </div>
+          <div class="ssbd-profile-actions" id="ssbd-follow-actions" hidden>
+            <button id="ssbd-follow-btn" type="button">Follow</button>
+            <button id="ssbd-unfollow-btn" type="button">Unfollow</button>
+          </div>
+          <div class="ssbd-avatar-editor">
+            <label for="ssbd-avatar-file">Avatar image</label>
+            <div class="ssbd-avatar-controls">
+              <input id="ssbd-avatar-file" type="file" accept="image/*" />
+              <button id="ssbd-avatar-upload" type="button">Upload avatar</button>
+            </div>
+            <p class="ssbd-avatar-hint">PNG or JPEG up to 5&nbsp;MB. Square images look best.</p>
+          </div>
+        </div>
+        <section class="ssbd-profile-feed">
+          <h3>Recent posts</h3>
+          <div id="ssbd-profile-feed-entries"></div>
+        </section>
+      </section>
+      <section id="ssbd-message-view" class="ssbd-view" data-view="message" hidden>
+        <article class="ssbd-message-card">
+          <h2 id="ssbd-message-title">Message</h2>
+          <p class="ssbd-message-id" id="ssbd-message-id"></p>
+          <div class="ssbd-message-meta" id="ssbd-message-meta"></div>
+          <div class="ssbd-message-body" id="ssbd-message-body"></div>
+          <details class="ssbd-message-raw">
+            <summary>Raw JSON</summary>
+            <pre id="ssbd-message-raw"></pre>
+          </details>
+        </article>
+      </section>
+    </main>
+    <script type="module" src="/ssbd-client.js"></script>
+  </body>
+</html>
