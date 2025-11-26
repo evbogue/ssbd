@@ -79,6 +79,27 @@ let isInitialOfflineLoad = false
 let currentRoute = null
 const status = createStatusManager(statusEl)
 
+function isSecureOrigin () {
+  const protocol = window.location && window.location.protocol
+  const hostname = window.location && window.location.hostname
+  if (protocol === 'https:') return true
+  if (!hostname) return false
+  return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1'
+}
+
+function getSecureContextHint () {
+  const protocol = (window.location && window.location.protocol) || 'unknown protocol'
+  const hostname = (window.location && window.location.hostname) || 'current host'
+  const origin = protocol + '//' + hostname
+  if (!isSecureOrigin()) {
+    return 'This page is served over ' + origin + '; WebCrypto requires HTTPS or localhost so `crypto.subtle` can run.'
+  }
+  if (!window.isSecureContext) {
+    return 'The browser still treats this as an insecure context, so WebCrypto APIs are blocked.'
+  }
+  return ''
+}
+
 function openClientDb() {
   if (!hasIndexedDb) return Promise.resolve(null)
   if (dbPromise) return dbPromise
@@ -1781,5 +1802,8 @@ ensureBrowserKeys()
     flushPendingQueue()
   })
   .catch(err => {
-    status.set('init', 'Failed to initialize keys: ' + err.message, 'error')
+    const baseMessage = 'Failed to initialize keys: ' + err.message
+    const hint = getSecureContextHint()
+    const message = hint ? baseMessage + ' ' + hint : baseMessage
+    status.set('init', message, 'error')
   })
