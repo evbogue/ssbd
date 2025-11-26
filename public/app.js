@@ -24,6 +24,27 @@
     while (feedEl.firstChild) feedEl.removeChild(feedEl.firstChild)
   }
 
+  function isSecureOrigin () {
+    var protocol = window.location && window.location.protocol
+    var hostname = window.location && window.location.hostname
+    if (protocol === 'https:') return true
+    if (!hostname) return false
+    return hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '::1'
+  }
+
+  function getSecureContextHint () {
+    var protocol = (window.location && window.location.protocol) || 'unknown protocol'
+    var hostname = (window.location && window.location.hostname) || 'current host'
+    var origin = protocol + '//' + hostname
+    if (!isSecureOrigin()) {
+      return 'This page is served over ' + origin + '; WebCrypto requires HTTPS or localhost so `crypto.subtle` can run.'
+    }
+    if (!window.isSecureContext) {
+      return 'The browser still treats this as an insecure context, so WebCrypto APIs are blocked.'
+    }
+    return ''
+  }
+
   function loadKeys () {
     try {
       var raw = localStorage.getItem('ssb_browser_keys')
@@ -114,7 +135,10 @@
       })
     }).catch(function (err) {
       console.error('failed to generate keys', err)
-      setStatus('Failed to generate keys: ' + err.message)
+      var hint = getSecureContextHint()
+      var statusMsg = 'Failed to generate keys: ' + err.message
+      if (hint) statusMsg += ' ' + hint
+      setStatus(statusMsg)
       setKeys({})
       return null
     })
